@@ -67,15 +67,15 @@ def flat_cap(x, y, z, r, recess=0):
         else:
             raise ValueError(f"recess should be a decimal between 0 and 1")
 
-    out = s.union()(cap, mx_post(5.5, z / 2))
+    out = s.union()(cap, mx_post(6, z / 2))
     return out
 
 
 if __name__ == "__main__":
     out_dir = sys.argv[1] if len(sys.argv) > 1 else os.curdir
 
-    cap = flat_cap(17, 17, 2, .5, recess=0.8)
+    cap = flat_cap(17, 17, 3, .75, recess=0.8)
     s.scad_render_to_file(cap, f"{out_dir}/flat_cap.scad", include_orig_code=True)
 
-    wide_cap = flat_cap(36, 17, 2, .5, recess=0.8)
+    wide_cap = flat_cap(36, 17, 3, .75, recess=0.8)
     s.scad_render_to_file(wide_cap, f"{out_dir}/wide_cap.scad", include_orig_code=True)
